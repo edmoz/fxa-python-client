@@ -86,7 +86,7 @@ def verifyUrl(url):
     qs = urlparse.urlparse(url).query
     qs_dict = urlparse.parse_qs(qs)
 
-    data = urllib.urlencode({"uid":qs_dict['uid'][0], "code":qs_dict['code'][0]})
+    data = {"uid":qs_dict['uid'][0], "code":qs_dict['code'][0]}
     r = requests.post(os.path.join(BASEURL, "v1/recovery_email/verify_code"), data)
     return r
 
