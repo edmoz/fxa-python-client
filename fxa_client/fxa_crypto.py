@@ -68,30 +68,43 @@ def xor(s1, s2):
     return b"".join([int2byte(ord(s1[i:i+1])^ord(s2[i:i+1])) for i in range(len(s1))])
 
 def getRestmailVerifyUrl(url):
-    restmail_str = urllib2.urlopen(url).read()
-    restmail_dict = json.loads(restmail_str)
+    print url
+    try:
+      r = requests.get(url)
+      if r.status_code != 200:
+          raise WebError(r)
+      restmail_dict = r.json()
+      print restmail_dict
+    except:
+        print '*** FAIL: No data for restmail.net acct'
+        sys.exit(1)
     assert len(restmail_dict)
     return restmail_dict[-1]['headers']['x-link']
 
 def verifyUrl(url):
+    assert url
     qs = urlparse.urlparse(url).query
     qs_dict = urlparse.parse_qs(qs)
 
     data = urllib.urlencode({"uid":qs_dict['uid'][0], "code":qs_dict['code'][0]})
-    req = urllib2.Request(os.path.join(BASEURL, "v1/recovery_email/verify_code"),
-                          data)
-    return urllib2.urlopen(req)
-
+    r = requests.post(os.path.join(BASEURL, "v1/recovery_email/verify_code"), data)
+    return r
 
 class WebError(Exception):
     def __init__(self, r):
         self.r = r
         self.args = (r, r.content)
+        sys.exit(1)
 
 def GET(api, versioned="v1/"):
     url = BASEURL+versioned+api
     print "GET", url
-    r = requests.get(url)
+    try:
+        r = requests.get(url)
+    except:
+        print '*** Exception', sys.exc_info()[0]
+        sys.exit(1)
+
     if r.status_code != 200:
         raise WebError(r)
     return r.json()
@@ -101,9 +114,14 @@ def POST(api, body={}, new_headers={}, versioned="v1/"):
     headers = {"content-type": "application/json"}
     headers.update(new_headers)
     print "POST", url, headers
-    r = requests.post(url,
-                      headers=headers,
-                      data=json.dumps(body))
+    try:
+        r = requests.post(url,
+                          headers=headers,
+                          data=json.dumps(body))
+    except:
+        print '*** Exception', sys.exc_info()[0]
+        sys.exit(1)
+
     if r.status_code != 200:
         raise WebError(r)
     return r.json()
