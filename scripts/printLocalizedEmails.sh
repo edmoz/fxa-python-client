@@ -1,7 +1,7 @@
 #!/bin/sh
 epoch=$(date +%s)
 export COMMAND="./ve/bin/fxa-client --password 12345678"
-$COMMAND --email ca$epoch@restmail.net --lang ca create &> /dev/null
+$COMMAND --email ca$epoch@restmail.net --lang ca create
 $COMMAND --email cs$epoch@restmail.net --lang cs create &> /dev/null
 $COMMAND --email cy$epoch@restmail.net --lang cy create &> /dev/null
 $COMMAND --email da$epoch@restmail.net --lang da create &> /dev/null
@@ -39,43 +39,43 @@ $COMMAND --email zh-CN$epoch@restmail.net --lang zh-CN create &> /dev/null
 $COMMAND --email zh-TW$epoch@restmail.net --lang zh-TW create &> /dev/null
 $COMMAND --email xx$epoch@restmail.net --lang xx create &> /dev/null
 sleep 5
-./getRestmailText ca$epoch@restmail.net
-./getRestmailText cs$epoch@restmail.net
-./getRestmailText cy$epoch@restmail.net
-./getRestmailText da$epoch@restmail.net
-./getRestmailText de$epoch@restmail.net
-./getRestmailText en-US$epoch@restmail.net
-./getRestmailText es$epoch@restmail.net
-./getRestmailText es-CL$epoch@restmail.net
-./getRestmailText et$epoch@restmail.net
-./getRestmailText eu$epoch@restmail.net
-./getRestmailText fr$epoch@restmail.net
-./getRestmailText fy$epoch@restmail.net
-./getRestmailText he$epoch@restmail.net
-./getRestmailText hu$epoch@restmail.net
-./getRestmailText id$epoch@restmail.net
-./getRestmailText it$epoch@restmail.net
-./getRestmailText ja$epoch@restmail.net
-./getRestmailText ko$epoch@restmail.net
-./getRestmailText lt$epoch@restmail.net
-./getRestmailText nb-NO$epoch@restmail.net
-./getRestmailText nl$epoch@restmail.net
-./getRestmailText pa$epoch@restmail.net
-./getRestmailText pl$epoch@restmail.net
-./getRestmailText pt$epoch@restmail.net
-./getRestmailText pt-BR$epoch@restmail.net
-./getRestmailText rm$epoch@restmail.net
-./getRestmailText ru$epoch@restmail.net
-./getRestmailText sk$epoch@restmail.net
-./getRestmailText sl$epoch@restmail.net
-./getRestmailText sq$epoch@restmail.net
-./getRestmailText sr$epoch@restmail.net
-./getRestmailText sr-LATN$epoch@restmail.net
-./getRestmailText sv$epoch@restmail.net
-./getRestmailText tr$epoch@restmail.net
-./getRestmailText zh-CN$epoch@restmail.net
-./getRestmailText zh-TW$epoch@restmail.net
-./getRestmailText xx$epoch@restmail.net
+./scripts/getRestmailText ca$epoch@restmail.net
+./scripts/getRestmailText cs$epoch@restmail.net
+./scripts/getRestmailText cy$epoch@restmail.net
+./scripts/getRestmailText da$epoch@restmail.net
+./scripts/getRestmailText de$epoch@restmail.net
+./scripts/getRestmailText en-US$epoch@restmail.net
+./scripts/getRestmailText es$epoch@restmail.net
+./scripts/getRestmailText es-CL$epoch@restmail.net
+./scripts/getRestmailText et$epoch@restmail.net
+./scripts/getRestmailText eu$epoch@restmail.net
+./scripts/getRestmailText fr$epoch@restmail.net
+./scripts/getRestmailText fy$epoch@restmail.net
+./scripts/getRestmailText he$epoch@restmail.net
+./scripts/getRestmailText hu$epoch@restmail.net
+./scripts/getRestmailText id$epoch@restmail.net
+./scripts/getRestmailText it$epoch@restmail.net
+./scripts/getRestmailText ja$epoch@restmail.net
+./scripts/getRestmailText ko$epoch@restmail.net
+./scripts/getRestmailText lt$epoch@restmail.net
+./scripts/getRestmailText nb-NO$epoch@restmail.net
+./scripts/getRestmailText nl$epoch@restmail.net
+./scripts/getRestmailText pa$epoch@restmail.net
+./scripts/getRestmailText pl$epoch@restmail.net
+./scripts/getRestmailText pt$epoch@restmail.net
+./scripts/getRestmailText pt-BR$epoch@restmail.net
+./scripts/getRestmailText rm$epoch@restmail.net
+./scripts/getRestmailText ru$epoch@restmail.net
+./scripts/getRestmailText sk$epoch@restmail.net
+./scripts/getRestmailText sl$epoch@restmail.net
+./scripts/getRestmailText sq$epoch@restmail.net
+./scripts/getRestmailText sr$epoch@restmail.net
+./scripts/getRestmailText sr-LATN$epoch@restmail.net
+./scripts/getRestmailText sv$epoch@restmail.net
+./scripts/getRestmailText tr$epoch@restmail.net
+./scripts/getRestmailText zh-CN$epoch@restmail.net
+./scripts/getRestmailText zh-TW$epoch@restmail.net
+./scripts/getRestmailText xx$epoch@restmail.net
 $COMMAND --email ca$epoch@restmail.net destroy &> /dev/null
 $COMMAND --email cs$epoch@restmail.net destroy &> /dev/null
 $COMMAND --email cy$epoch@restmail.net destroy &> /dev/null
@@ -112,4 +112,4 @@ $COMMAND --email sv$epoch@restmail.net destroy &> /dev/null
 $COMMAND --email tr$epoch@restmail.net destroy &> /dev/null
 $COMMAND --email zh-CN$epoch@restmail.net destroy &> /dev/null
 $COMMAND --email zh-TW$epoch@restmail.net destroy &> /dev/null
-$COMMAND --email xx$epoch@restmail.net destroy &> /dev/null
+$COMMAND --email xx$epoch@restmail.net destroy
